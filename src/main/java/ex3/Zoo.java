@@ -22,19 +22,20 @@ public class Zoo {
      * @param comportement Régime alimentaire de l'animal (Carnivore, Herbivore).
      */
     public void addAnimal(String nomAnimal, String typeAnimal, String comportement) {
+        Animal animal = new Animal(typeAnimal, nomAnimal, comportement);
         switch (typeAnimal) {
             case "MAMMIFERE":
                 if ("CARNIVORE".equals(comportement)) {
-                    zoneCarnivore.addAnimal(typeAnimal, nomAnimal, comportement);
+                    zoneCarnivore.addAnimal(animal);
                 } else if ("HERBIVORE".equals(comportement)) {
-                    savaneAfricaine.addAnimal(typeAnimal, nomAnimal, comportement);
+                    savaneAfricaine.addAnimal(animal);
                 }
                 break;
             case "REPTILE":
-                fermeReptile.addAnimal(typeAnimal, nomAnimal, comportement);
+                fermeReptile.addAnimal(animal);
                 break;
             case "POISSON":
-                aquarium.addAnimal(typeAnimal, nomAnimal, comportement);
+                aquarium.addAnimal(animal);
                 break;
         }
     }
@@ -43,9 +44,13 @@ public class Zoo {
      * Affiche la liste de tous les animaux présents dans le zoo, organisée par zone.
      */
     public void afficherListeAnimaux() {
+        System.out.println("Savane Africaine:");
         savaneAfricaine.afficherListeAnimaux();
+        System.out.println("\nZone Carnivore:");
         zoneCarnivore.afficherListeAnimaux();
+        System.out.println("\nFerme Reptile:");
         fermeReptile.afficherListeAnimaux();
+        System.out.println("\nAquarium:");
         aquarium.afficherListeAnimaux();
     }
 }
